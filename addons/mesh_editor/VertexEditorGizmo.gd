@@ -78,12 +78,29 @@ func clicked_point(camera : Camera3D, clicked_point_screen : Vector2, target_poi
 	return target_point_screen.distance_to(clicked_point_screen) < POINT_RADIUS
 
 func _commit_subgizmos(ids, restores, cancel):
+	print('Committing subgizmos.')
+	
+	if cancel:
+		for i in ids.size():
+			base_gizmo.vertices[ids[i]].position = restores[i].origin
+			_redraw()
+			return
+	
+	var ur := base_gizmo.undo_redo
+	print(ur)
+	ur.create_action("Transform Vertices", UndoRedo.MERGE_DISABLE)
+	
 	for index in ids.size():
 		var vert_index = ids[index]
 		var restore = restores[index]
 		
-		#base_gizmo.vertices[vert_index].position = restore.origin
+		ur.add_do_method(base_gizmo, &"remake_mesh")
+		ur.add_undo_method(base_gizmo, &"remake_mesh")
+		ur.add_do_property(base_gizmo.vertices[vert_index], &'position', base_gizmo.vertices[vert_index].position)
+		ur.add_undo_property(base_gizmo.vertices[vert_index], &'position', restore)
 	base_gizmo.remake_mesh()
+	
+	ur.commit_action()
 	
 	_redraw()
 

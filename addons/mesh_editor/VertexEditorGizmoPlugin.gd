@@ -8,7 +8,7 @@ func _init():
 	create_material("main", Color(1, 1, 1))
 	create_material(
 		"vertex_mesh",
-		Color(0.96810764074326, 0.24348595738411, 0.58922570943832),
+		Color(0.31934174895287, 0.57395887374878, 0.95185166597366),
 		false, true
 	)
 	create_handle_material("handles", false, editor_handle_3d_texture)

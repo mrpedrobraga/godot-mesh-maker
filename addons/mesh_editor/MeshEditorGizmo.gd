@@ -5,6 +5,8 @@ class_name MeshEditorGizmo
 ## They are ordered by the surface's index on the mesh.;
 var surface_mesh_tools : Array[MeshDataTool]
 
+var undo_redo : EditorUndoRedoManager
+
 ## The class for vertices.
 class Vertex:
 	var index : int

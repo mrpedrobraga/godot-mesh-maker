@@ -13,6 +13,9 @@ func _enter_tree():
 	vertex_gizmo_plugin = vertex_gizmo_plugin.new()
 	edge_gizmo_plugin = edge_gizmo_plugin.new()
 	face_gizmo_plugin = face_gizmo_plugin.new()
+	
+	base_gizmo_plugin.undo_redo = get_undo_redo()
+	
 	add_node_3d_gizmo_plugin(base_gizmo_plugin)
 	add_node_3d_gizmo_plugin(vertex_gizmo_plugin)
 	add_node_3d_gizmo_plugin(edge_gizmo_plugin)

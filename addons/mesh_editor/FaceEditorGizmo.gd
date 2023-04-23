@@ -102,10 +102,10 @@ func _get_subgizmo_transform(id):
 	return Transform3D(Basis.IDENTITY, base_gizmo.faces[id].get_center())
 
 func _set_subgizmo_transform(id, transform):
-	var delta_transform := Transform3D(transform)
+	var og_transform = _get_subgizmo_transform(id)
 	var face = base_gizmo.faces[id]
 	var center = face.get_center()
-	delta_transform.translated(-center)
 	
 	for vertex in [face.vertex_a, face.vertex_b, face.vertex_c]:
-		vertex.position.y = delta_transform.origin.y
+		vertex.position = og_transform.inverse() * vertex.position
+		vertex.position = transform * vertex.position
