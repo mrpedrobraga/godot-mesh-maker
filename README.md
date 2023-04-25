@@ -2,7 +2,7 @@
 
 A simple Mesh Editor for quickly prototyping levels in Godot Engine.
 
-![image](https://user-images.githubusercontent.com/79771992/234128983-72858d04-3fea-4e3c-a48b-2c8717e573b4.png)
+![image](https://user-images.githubusercontent.com/79771992/234383066-460b0e8e-73ed-44f3-a7f4-a2732ee8473f.png)
 
 Contributors:
 - @mrpedrobraga
