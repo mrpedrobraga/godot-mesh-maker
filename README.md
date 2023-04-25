@@ -18,7 +18,7 @@ Contributors:
 
 - [ ] Only show MeshEditor gizmos when the bottom editor is selected.
 - [ ] Implement UndoRedo.
-- [ ] Add unscaled billboards for handles instead of little cubes.
+- [X] Add unscaled billboards for handles instead of little cubes.
 - [ ] Implement automatically hiding gizmos based on mode.
 - [ ] Implement Edge and Face selection.
 - [ ] Implement option to only show components that aren't occluded.
