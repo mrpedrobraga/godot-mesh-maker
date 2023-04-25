@@ -6,13 +6,8 @@ var editor_handle_3d_texture := preload("res://addons/mesh_editor/editor_handle_
 
 func _init():
 	create_material("main", Color(1, 1, 1))
-	create_material(
-		"vertex_mesh",
-		Color(0.31934174895287, 0.57395887374878, 0.95185166597366),
-		false, true
-	)
-	create_handle_material("handles", false, editor_handle_3d_texture)
-	create_handle_material("unselected_vertex", false, preload("res://addons/mesh_editor/editor_handle_3d_purple.png"))
+	create_handle_material("vertex_selected", false, editor_handle_3d_texture)
+	create_handle_material("vertex", false, preload("res://addons/mesh_editor/editor_handle_3d_purple.png"))
 
 func _create_gizmo(node):
 	if _can_be_edited(node):

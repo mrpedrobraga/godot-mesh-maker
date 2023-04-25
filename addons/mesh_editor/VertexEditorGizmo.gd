@@ -17,23 +17,20 @@ func _redraw():
 	var edited_node = get_node_3d()
 	_reset_base_gizmo(edited_node)
 	
-	var vertex_mesh = BoxMesh.new()
-	vertex_mesh.size = Vector3(0.1, 0.1, 0.1)
-	
-	var handles_material = get_plugin().get_material("handles", self)
-	
-	# Add handles for all the vertices.
-#	add_handles(
-#		base_gizmo.vertices.map(func(vertex): return vertex.position),
-#		handles_material,
-#		range(base_gizmo.vertices.size())
-#	)
+	var vertex_mesh = PointMesh.new()
+
+	var selected_vertices = get_subgizmo_selection()
 	
 	for vert_index in base_gizmo.vertices.size():
 		var vertex = base_gizmo.vertices[vert_index]
+		var material = get_plugin().get_material(
+				"vertex_selected" if vert_index in selected_vertices\
+				else "vertex",
+				self
+			)
 		add_mesh(
 			vertex_mesh,
-			get_plugin().get_material("vertex_mesh", self),
+			material,
 			Transform3D(Basis.IDENTITY, vertex.position)
 		)
 
